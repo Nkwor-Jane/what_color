@@ -1,10 +1,27 @@
 import { useState } from 'react';
+import {motion} from 'framer-motion';
 import './App.css'
+// Components
 import ColorBox from './components/ColorBox';
 import GameStats from './components/GameStats';
 import Colors from './components/Colors';
 import Score from './components/Score';
 import NewGame from './components/NewGame';
+
+const glowVariants = {
+  animate: {
+    background: [
+      "radial-gradient(circle, rgba(255,0,150,0.3) 0%, rgba(201, 12, 122, 0.6) 70%)",
+      "radial-gradient(circle, rgba(0,255,150,0.3) 0%, rgba(60, 179, 129, 0.6) 70%)",
+      "radial-gradient(circle, rgba(0,150,255,0.3) 0%, rgba(4, 72, 121, 0.6) 70%)",
+    ],
+    transition: {
+      duration: 6,
+      repeat: Infinity,
+      repeatType: "mirror",
+    },
+  },
+};
 
 const colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "cyan", "lime", "teal", "brown", "magenta"];
 
@@ -19,8 +36,8 @@ const App = () => {
 
 
   const getMoreColors = () => {
-    let shuffled = [...colors].sort(() => 0.5 - Math.random()); 
-    return shuffled.slice(0, 6);
+    let shuffle = [...colors].sort(() => 0.5 - Math.random()); 
+    return shuffle.slice(0, 6);
   };
 
   const startNewGame = (resetScore = true, resetLives=true) => {
@@ -32,8 +49,7 @@ const App = () => {
       setLives(3); 
     }
     const moreColors = getMoreColors();
-    setDisplayColors(moreColors)
-    console.log(moreColors)
+    setDisplayColors(moreColors);
 
     const getRandomColor = (prevColor) =>{
       let randomColor;
@@ -69,7 +85,6 @@ const App = () => {
   const gameOver = () => {
     setHighScore((prevHighScore) => Math.max(prevHighScore, score))
     setGameStats({message:"Game Over! 💀 Click New Game to restart.", className:"game_over font_style"});
-    // setLives(3)
     setScore(0);
     setPlayGame(true)
   };
@@ -77,7 +92,7 @@ const App = () => {
  
 
   return (
-    <div className='wrapper'>
+    <motion.div className='wrapper' variants={glowVariants} animate="animate">
       {
         !playGame ? (
           <div className='homepage'>
@@ -89,16 +104,22 @@ const App = () => {
           </div>
         ):
         (
-          <div className='container'>
-          <h2 className='lives_h2'>Lives: {"❤️".repeat(lives)}</h2>
+          <div className='container'  >
+          <h2 className='lives_h2'>Lives: 
+          {Array.from({ length: lives }).map((_, index) => (
+            <span key={index} className="heart">❤️</span>
+          ))}
+            </h2>
           <ColorBox color={targetColor}/>
           <GameStats stats={gameStats}/>
+          <div>
           <Colors colors={displayColors} onGuess={handleGuess}/>
+          </div>
           <Score score={score} highScore={highScore}/>
           <NewGame onClick={() => startNewGame(true, true)}/>
           </div>
         )}
-    </div>
+    </motion.div>
   )
 }
 

@@ -4,7 +4,6 @@
   margin: 0;
   box-sizing: border-box;
   line-height: 30px;
-
 }
 .homepage{
   display: flex;
@@ -16,8 +15,6 @@
   height: 100vh;
   background-image: linear-gradient(to right, #F93827,#FF9D23,#FFE31A,#16C47F,#074799,#4635B1,#B771E5);
   color: #fff;
- 
-  
 }
 
 .homepage h1{
@@ -40,10 +37,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
- 
-  
+  width: 100vw;
+  height: 100vh;
 }
 .container{
+  background-color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,19 +60,27 @@
   cursor: pointer;
 }
 .colors {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
   margin-top: 20px;
+  display:grid;
+  grid-template-columns:100px 100px 100px;
+  gap: 20px;
+  cursor: pointer;
 }
 
 .colors button {
   cursor: pointer;
-  border-radius: 100%;
-  padding: 40px;
+  border-radius: 10%;
+  padding: 30px;
   border: none;
   box-shadow: 0 4px 8px 0 rgba(124, 124, 124, 0.2), 0 6px 20px 0 rgba(107, 107, 107, 0.19);
+}
+.color_box{
+  width: 100px;
+  height: 100px;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px 0 rgba(124, 124, 124, 0.2), 0 6px 20px 0 rgba(107, 107, 107, 0.19);
+  border-radius: 10%;
+  cursor:pointer;
 }
 .newGameBtn{
   border: none;
@@ -101,12 +107,13 @@
   font-family: "Roboto", serif;
   font-weight: 600;
   padding: 10px;
+  font-size: 20px;
 }
 
 .font_style{
   font-family: "Roboto", serif;
   font-weight: 600;
-  padding: 7px;
+  padding: 5px;
   border-radius: 5px;
 }
 .game_over{
@@ -118,12 +125,67 @@
   background-color: #45ecaa;
 
 }
-.match_color{
-  
+.match_color {
+  font-size: 1.5rem;
 }
 
 .wrong_match{
   border: #F93827;
   background-color: #f87e73;
  
+}
+@keyframes pulse {
+  0% {
+      transform: scale(1);
+      opacity: 1;
+  }
+
+  50% {
+      transform: scale(1.2);
+      opacity: 0.8;
+  }
+
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+.heart{
+  display: inline-block;
+  animation: pulse 2s infinite ease-in-out;
+  padding: 0 5px;
+}
+
+@media (min-width: 480px) and (max-width:780px){
+  .container{
+    width: 300px;
+  }
+  .color_box{
+    width: 100px;
+    height: 100px;
+    margin: 15px auto;
+  }
+  .colors{ 
+    gap: 30px;
+    grid-template-columns: 60px 60px 60px;
+    grid-template-rows: 70px 70px;
+  }
+  .score_p p, .lives_h2{
+    font-size: 17px;
+  }
+  .newGameBtn{
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width:781px) and (max-width:998px){
+  .container{
+    width: 400px ;
+  }
+}
+
+@media (min-width:999px) and (max-width:1024px){
+  .container{
+    width: 410px;
+  }
 }

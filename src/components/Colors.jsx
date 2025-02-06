@@ -17,11 +17,6 @@ const Colors = ({ colors, onGuess }) => {
           data-testid="colorOption"
           style={{
             backgroundColor: color,
-            width: "80px",
-            height: "40px",
-            margin: "10px",
-            border: "none",
-            cursor: "pointer",
           }}
           onClick={() => {
             onGuess(color);
