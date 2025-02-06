@@ -2,12 +2,12 @@
 
 ## Overview
 
-This is project is for promotion into stage 2 for the HNG Internship Cohort 12. It is  a Color Guessing game called **What Color?** made with ReactJS. This task is dives into design and functionality.
+This is project is for promotion into stage 2 for the HNG Internship Cohort 12. It is  a Color Matching game called **What Color?** made with ReactJS. This task is dives into game design and functionality.
 
 ## Features
 
 - **Responsive Design:** Built with Mobile-first responsive design.
-- 
+- **Game Functionality:** Match color circles to appropriate color.
 
 ## Installation
 
@@ -21,20 +21,17 @@ This is project is for promotion into stage 2 for the HNG Internship Cohort 12. 
 
 2. Open your browser and navigate to: ```javascript http://localhost:5173/```
 
-## Components
-1. **
-
 ## Screenshots
 
-- Desktop View
-![Before View](assets/desktop_view.png)
+- Homepage View
+![Before View](public/what_color.png)
 
-- Mobile View
+- Game View
 ![After View](public/mobile_view.png)
 
 ## Live Demo
 
-Check out the live demo [here]()
+Check out the live demo [here](https://janematchcolourgame.netlify.app/)
 
 ## Contributing
 

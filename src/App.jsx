@@ -16,36 +16,51 @@ const App = () => {
   const [gameStats, setGameStats] = useState("Click a color to start!")
   const [lives, setLives] = useState(3);
 
-  const startNewGame = (resetScore = true) => {
+  const startNewGame = (resetScore = true, resetLives=true) => {
     if (resetScore) {
       setHighScore((prevHighScore) => Math.max(prevHighScore, score));
       setScore(0);
     }
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    if (resetLives) {
+      setLives(3); 
+    }
+    const getRandomColor = (prevColor) =>{
+      let randomColor;
+      do{
+        randomColor = colors[Math.floor(Math.random() * colors.length)]
+      }while (randomColor === prevColor);
+      return randomColor;
+    }
+    const randomColor = getRandomColor(targetColor);
     setTargetColor("");
     setTimeout(() => setTargetColor(randomColor), 10);
-    setGameStats("Match the correct color!");
+    setGameStats({message:"Match the correct color!", className: "match_color font_style"});
   };
 
   const handleGuess = (selectedColor) => {
+    if (lives <= 0) return;
     if (selectedColor === targetColor) {
       setScore((prevScore) => prevScore + 1);
-      setGameStats("Correct! 🎉 Changing color...");
+      setGameStats({message: "Correct! 🎉 Changing color...", className:"correct_match font_style"});
       setTimeout(() => startNewGame(false), 1000);
     } else {
-      setLives((prevLives) => prevLives - 1);
-      setGameStats("Wrong! Try again ❌");
-      if (lives - 1 <= 0) {
-        gameOver();
-      }
+      setLives((prevLives) => {
+        const newLives = Math.max(prevLives - 1, 0);
+        if (newLives === 0) {
+          gameOver();
+        }
+        return newLives;
+      });
+      setGameStats({ message: "Wrong! ❌ Try again.", className: "wrong_match font_style" });
     }
   };
 
   const gameOver = () => {
-    setPlayGame(false);
-    setGameStats("Game Over! Click New Game to restart.");
-    setLives(3);
+    setHighScore((prevHighScore) => Math.max(prevHighScore, score))
+    setGameStats({message:"Game Over! 💀 Click New Game to restart.", className:"game_over font_style"});
+    // setLives(3)
     setScore(0);
+    setPlayGame(true)
   };
 
  
@@ -69,7 +84,7 @@ const App = () => {
           <GameStats stats={gameStats}/>
           <Colors colors={colors} onGuess={handleGuess}/>
           <Score score={score} highScore={highScore}/>
-          <NewGame onClick={startNewGame}/>
+          <NewGame onClick={() => startNewGame(true, true)}/>
           </div>
         )}
     </div>

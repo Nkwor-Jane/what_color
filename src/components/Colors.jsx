@@ -24,7 +24,6 @@ const Colors = ({ colors, onGuess }) => {
             cursor: "pointer",
           }}
           onClick={() => {
-            console.log("Button Clicked:", color);
             onGuess(color);
           }}
         >

@@ -4,7 +4,6 @@ import "../App.css"
 const NewGame = ({onClick}) =>{
     return (
         <button className="newGameBtn" data-testid="newGameButton" onClick={() => {
-            console.log("New Game Button Clicked");
             onClick(true)
             }}
             >

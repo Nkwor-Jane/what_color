@@ -14,7 +14,7 @@
   gap: 20px;
   width: 100vw;
   height: 100vh;
-  background-image: linear-gradient(to right, #F93827,#FF9D23,#16C47F,#B771E5);
+  background-image: linear-gradient(to right, #F93827,#FF9D23,#FFE31A,#16C47F,#074799,#4635B1,#B771E5);
   color: #fff;
  
   
@@ -40,6 +40,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+ 
+  
 }
 .container{
   display: flex;
@@ -47,8 +49,9 @@
   justify-content: center;
   flex-direction: column;
   margin-top: 20px;
-  width: 400px;
+  width: 500px;
   padding: 20px;
+  border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .playBtn{
@@ -69,7 +72,7 @@
 .colors button {
   cursor: pointer;
   border-radius: 100%;
-  padding: 30px;
+  padding: 40px;
   border: none;
   box-shadow: 0 4px 8px 0 rgba(124, 124, 124, 0.2), 0 6px 20px 0 rgba(107, 107, 107, 0.19);
 }
@@ -85,7 +88,7 @@
   background-color: rgb(130, 189, 240);
 }
 .newGameBtn:hover{
-  background-color: rgb(73, 159, 235);
+  background-color: rgb(24, 139, 240);
 }
 
 .score_p{
@@ -98,4 +101,29 @@
   font-family: "Roboto", serif;
   font-weight: 600;
   padding: 10px;
+}
+
+.font_style{
+  font-family: "Roboto", serif;
+  font-weight: 600;
+  padding: 7px;
+  border-radius: 5px;
+}
+.game_over{
+  border: #A6AEBF;
+  background-color: #C5D3E8;
+}
+.correct_match{
+  border: 1px solid #16C47F;
+  background-color: #45ecaa;
+
+}
+.match_color{
+  
+}
+
+.wrong_match{
+  border: #F93827;
+  background-color: #f87e73;
+ 
 }
