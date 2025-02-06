@@ -11,7 +11,7 @@ This is project is for promotion into stage 2 for the HNG Internship Cohort 12. 
 
 ## Installation
 
-1. CLone the repository: ```javascript git clone https://github.com/Nkwor-Jane/what_color.git```
+1. lone the repository: ```javascript git clone https://github.com/Nkwor-Jane/what_color.git```
 2. Navigate to the project: ```javascript cd what_color```
 3. Install dependencies:```javascript npm install```
 

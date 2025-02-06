@@ -6,15 +6,22 @@ import Colors from './components/Colors';
 import Score from './components/Score';
 import NewGame from './components/NewGame';
 
-const colors = ["red", "blue", "green", "yellow", "purple", "orange"];
+const colors = ["red", "blue", "green", "yellow", "purple", "orange", "pink", "cyan", "lime", "teal", "brown", "magenta"];
 
 const App = () => {
   const [playGame, setPlayGame] = useState(false)
   const [targetColor, setTargetColor] = useState("")
   const [score, setScore] = useState(0);
+  const [displayColors, setDisplayColors] = useState("")
   const [highScore, setHighScore] = useState(0)
   const [gameStats, setGameStats] = useState("Click a color to start!")
   const [lives, setLives] = useState(3);
+
+
+  const getMoreColors = () => {
+    let shuffled = [...colors].sort(() => 0.5 - Math.random()); 
+    return shuffled.slice(0, 6);
+  };
 
   const startNewGame = (resetScore = true, resetLives=true) => {
     if (resetScore) {
@@ -24,10 +31,14 @@ const App = () => {
     if (resetLives) {
       setLives(3); 
     }
+    const moreColors = getMoreColors();
+    setDisplayColors(moreColors)
+    console.log(moreColors)
+
     const getRandomColor = (prevColor) =>{
       let randomColor;
       do{
-        randomColor = colors[Math.floor(Math.random() * colors.length)]
+        randomColor = moreColors[Math.floor(Math.random() * moreColors.length)]
       }while (randomColor === prevColor);
       return randomColor;
     }
@@ -82,7 +93,7 @@ const App = () => {
           <h2 className='lives_h2'>Lives: {"❤️".repeat(lives)}</h2>
           <ColorBox color={targetColor}/>
           <GameStats stats={gameStats}/>
-          <Colors colors={colors} onGuess={handleGuess}/>
+          <Colors colors={displayColors} onGuess={handleGuess}/>
           <Score score={score} highScore={highScore}/>
           <NewGame onClick={() => startNewGame(true, true)}/>
           </div>
