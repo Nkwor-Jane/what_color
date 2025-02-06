@@ -7,7 +7,7 @@ This is project is for promotion into stage 2 for the HNG Internship Cohort 12. 
 ## Features
 
 - **Responsive Design:** Built with Mobile-first responsive design.
-- **Game Functionality:** Match color circles to appropriate color.
+- **Game Functionality:** Match color squares to appropriate color square box.
 
 ## Installation
 
