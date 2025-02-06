@@ -27,7 +27,7 @@ This is project is for promotion into stage 2 for the HNG Internship Cohort 12. 
 ![Before View](public/what_color.png)
 
 - Game View
-![After View](public/mobile_view.png)
+![After View](public/what_color_game.png)
 
 ## Live Demo
 
